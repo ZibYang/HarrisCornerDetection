@@ -25,9 +25,7 @@
 
 #### I: **Finding the difference in intensity for a displacement of $(u, v)$ in all directions.**
 
-$$
-E(u,v)=\sum_{x,y}w(x,y)[I(x+u,y+v)-I(x,y)]^2
-$$
+<img src="https://latex.codecogs.com/gif.latex?E(u,v)=\sum_{x,y}w(x,y)[I(x&plus;u,y&plus;v)-I(x,y)]^2" title="E(u,v)=\sum_{x,y}w(x,y)[I(x+u,y+v)-I(x,y)]^2" />
 
 which
 
@@ -44,65 +42,14 @@ which
 - $I(x,y)$ is the **Intensity**
 
 we want $I(x+u,y+v)-I(x,y)$ to be near $0$ for nearly constant patches and be $Large$ for distinctive patches. Typically, we will apply **Taylor Expansion** to the above equation
+
 $$
-\begin{aligned}
-f(x+u,y+v)= & f(x,y) &+& uf_x(x,y) &+& vf_y(u,v) \\ 
-+ & \frac{1}{2!}[u^2f_{xx}(x,y) &+& uvf_{xy}(u,v) &+&v^2f_{yy}(u,v)] \\
-+ & \frac{1}{3!}[u^3f_{xxx}(x,y) &+& u^2vf_{xxy}(u,v) &+&uv^2f_{xyy}(x,y) &+&v^3f_{yyy}(u,v) ] \\
-+ & \, ...
-\end{aligned}
+<img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;f(x&plus;u,y&plus;v)=&space;&&space;f(x,y)&space;&&plus;&&space;uf_x(x,y)&space;&&plus;&&space;vf_y(u,v)&space;\\&space;&plus;&space;&&space;\frac{1}{2!}[u^2f_{xx}(x,y)&space;&&plus;&&space;uvf_{xy}(u,v)&space;&&plus;&v^2f_{yy}(u,v)]&space;\\&space;&plus;&space;&&space;\frac{1}{3!}[u^3f_{xxx}(x,y)&space;&&plus;&&space;u^2vf_{xxy}(u,v)&space;&&plus;&uv^2f_{xyy}(x,y)&space;&&plus;&v^3f_{yyy}(u,v)&space;]&space;\\&space;&plus;&space;&&space;\,&space;...&space;\end{aligned}" title="\begin{aligned} f(x+u,y+v)= & f(x,y) &+& uf_x(x,y) &+& vf_y(u,v) \\ + & \frac{1}{2!}[u^2f_{xx}(x,y) &+& uvf_{xy}(u,v) &+&v^2f_{yy}(u,v)] \\ + & \frac{1}{3!}[u^3f_{xxx}(x,y) &+& u^2vf_{xxy}(u,v) &+&uv^2f_{xyy}(x,y) &+&v^3f_{yyy}(u,v) ] \\ + & \, ... \end{aligned}" />}
 $$
 Use the **First Order Approx **: $f(x+u,y+v)\approx f(x,y) + uf_x(x,y) + vf_y(x,y)$
-$$
-\begin{aligned}
-\sum & [I(x+u,y+v)-I(x,y)]^2 \\
-\approx\sum &[I(x,y) + uI_x + vI_y -I(x,y)]^2 \\
-=\sum &[u^2I_x^2+2uvI_xI_y+v^2I_y^2] \\ 
-=\sum & 
-\begin{bmatrix}
-u & v
-\end{bmatrix}
-\begin{bmatrix}
-I_x^2 & I_xI_y \\
-I_xI_y & I_y^2
-\end{bmatrix}
-\begin{bmatrix}
-u \\ v
-\end{bmatrix} 
-= \begin{bmatrix}
-u & v
-\end{bmatrix}
-(\sum
-\begin{bmatrix}
-I_x^2 & I_xI_y \\
-I_xI_y & I_y^2
-\end{bmatrix}
-)
-\begin{bmatrix}
-u \\ v
-\end{bmatrix}
-\end{aligned}
-$$
-denote that:
-$$
-E(u,v) \approx 
-\begin{bmatrix}
-u & v
-\end{bmatrix}
-M
-\begin{bmatrix}
-u \\ v
-\end{bmatrix}
-$$
-where :
-$$
-M = \sum_{x,y}w(x,y)
-\begin{bmatrix}
-I_x^2 & I_xI_y \\
-I_xI_y & I_y^2
-\end{bmatrix}
-$$
 
+
+<img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;\sum&space;&&space;[I(x&plus;u,y&plus;v)-I(x,y)]^2&space;\\&space;\approx\sum&space;&[I(x,y)&space;&plus;&space;uI_x&space;&plus;&space;vI_y&space;-I(x,y)]^2&space;\\&space;=\sum&space;&[u^2I_x^2&plus;2uvI_xI_y&plus;v^2I_y^2]&space;\\&space;=\sum&space;&&space;\begin{bmatrix}&space;u&space;&&space;v&space;\end{bmatrix}&space;\begin{bmatrix}&space;I_x^2&space;&&space;I_xI_y&space;\\&space;I_xI_y&space;&&space;I_y^2&space;\end{bmatrix}&space;\begin{bmatrix}&space;u&space;\\&space;v&space;\end{bmatrix}&space;=&space;\begin{bmatrix}&space;u&space;&&space;v&space;\end{bmatrix}&space;(\sum&space;\begin{bmatrix}&space;I_x^2&space;&&space;I_xI_y&space;\\&space;I_xI_y&space;&&space;I_y^2&space;\end{bmatrix}&space;)&space;\begin{bmatrix}&space;u&space;\\&space;v&space;\end{bmatrix}&space;\end{aligned}" title="\begin{aligned} \sum & [I(x+u,y+v)-I(x,y)]^2 \\ \approx\sum &[I(x,y) + uI_x + vI_y -I(x,y)]^2 \\ =\sum &[u^2I_x^2+2uvI_xI_y+v^2I_y^2] \\ =\sum & \begin{bmatrix} u & v \end{bmatrix} \begin{bmatrix} I_x^2 & I_xI_y \\ I_xI_y & I_y^2 \end{bmatrix} \begin{bmatrix} u \\ v \end{bmatrix} = \begin{bmatrix} u & v \end{bmatrix} (\sum \begin{bmatrix} I_x^2 & I_xI_y \\ I_xI_y & I_y^2 \end{bmatrix} ) \begin{bmatrix} u \\ v \end{bmatrix} \end{aligned}" />
 
 #### ii: **Use a equation to determine if a window can contain a corner or not**
 
