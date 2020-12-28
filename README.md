@@ -1,5 +1,18 @@
 # HarrisCornerDetection
 > CV course homework2
+## 0. How to run this project
+
+1. Clone: `https://github.com/ZibYang/HarrisCornerDetection.git`
+
+2. Do the follow steps:
+```shell
+mkdir build && cd build
+cmake ..
+make ..
+./src/start windowSize sobelKernelSize k # recommend 5 5 0.05
+```
+
+**Make sure we can find the camera!**
 
 ## 1. What is feature
 
@@ -68,9 +81,9 @@ When <img src="https://latex.codecogs.com/gif.latex?R" title="R" /> is large, th
 ### 2. How to calculate the Ix, Iy and Ixy
 
 > Use Sobel kernel to converte
-1. How to calculate sobel kernel due to **kernel size**  
+1. How to calculate sobel kernel due to **kernel size**   
 
-  First, using YangHui trainagle to calculate the **smooth()** and the **diff()**
+    First, using YangHui trainagle to calculate the **smooth()** and the **diff()**
 
   <img src="https://latex.codecogs.com/gif.latex?YangHui(k,n)=\left\{\begin{matrix}\frac{n!}{(n-k)!k!}\, if(k\geq0,k\leq n) \\ 0 \, otherwise\end{matrix}\right." title="YangHui" />
 
@@ -79,9 +92,31 @@ When <img src="https://latex.codecogs.com/gif.latex?R" title="R" /> is large, th
   <img src="https://latex.codecogs.com/gif.latex?diff(x, windowSize)=YangHui(x,\,windowSize-2)-YangHui(x-1,\,YangHui-2)" title=diff/>  
 
   Then, use **smooth()** and the **diff()** to get the **sobel()**
-  
+
   <img src="https://latex.codecogs.com/gif.latex?sobel(windowSize)=diff(0...windowSize,\,windowSize)*smooth(0...windowSize,\,windowSize)" title="sobel"/>
 
-  2. How to get the *WindowFunction()*
-     I use Guass function here:
-     <img src="https://latex.codecogs.com/gif.latex?sobel(windowSize)=diff(0...windowSize,\,windowSize)*smooth(0...windowSize,\,windowSize)" title="sobel"/>
+  2. How to get the **WindowFunction()**  
+     I use Guass function here:  
+     <img src="https://latex.codecogs.com/gif.latex?w(u,v)=\frac{1}{2\pi \sigma ^2}e^{-\frac{u^2+v^2}{2\sigma ^2}}" title="w"/>
+
+### 3. Result
+1. compare with **OpenCV**
+<center class="pics"> 
+   <img src="https://github.com/BiaobiaoZhangZiyang/HarrisCornerDetection/raw/master/pics/vspic.png" width="200" alt="mev"/>
+</center> 
+2. Max, Min and R
+Max:  
+<center class="pics"> 
+   <img src="https://github.com/BiaobiaoZhangZiyang/HarrisCornerDetection/raw/master/pics/slambda1.png" width="200" alt="mev"/>
+</center> 
+Min:  
+<center class="pics"> 
+   <img src="https://github.com/BiaobiaoZhangZiyang/HarrisCornerDetection/raw/master/pics/slambda2.png" width="200" alt="mev"/>
+</center> 
+R:  
+<center class="pics"> 
+   <img src="https://github.com/BiaobiaoZhangZiyang/HarrisCornerDetection/raw/master/pics/sR.png" width="200" alt="mev"/>
+</center> 
+
+
+
