@@ -85,11 +85,11 @@ When <img src="https://latex.codecogs.com/gif.latex?R" title="R" /> is large, th
 
     First, using YangHui trainagle to calculate the **smooth()** and the **diff()**
 
-  <img src="https://latex.codecogs.com/gif.latex?YangHui(k,n)=\left\{\begin{matrix}\frac{n!}{(n-k)!k!} \, k\geq0,k\leq n\\ 0 \, otherwise\end{matrix}\right." title="YangHui" /> 
+  <img src="https://latex.codecogs.com/gif.latex?YangHui(k,n)=\left\{\begin{matrix} \frac{n!}{(n-k)!k!} \, k\geq0,k\leq n\\ 0 \, otherwise \end{matrix}\right." title="YangHui" /> 
 
-  <img src="https://latex.codecogs.com/gif.latex?smooth(x, windowSize)=\frac{(windowSize-1)!}{(windowSize-1-x)!x!}" title="smooth"/>
+  <img src="https://latex.codecogs.com/gif.latex?smooth(x,windowSize)=\frac{(windowSize-1)!}{(windowSize-1-x)!x!}" title="smooth"/>
 
-  <img src="https://latex.codecogs.com/gif.latex?diff(x, windowSize)=YangHui(x,\,windowSize-2)-YangHui(x-1,\,YangHui-2)" title=diff/>  
+  <img src="https://latex.codecogs.com/gif.latex?diff(x,windowSize)=YangHui(x,\,windowSize-2)-YangHui(x-1,\,YangHui-2)" title=diff/>  
 
   Then, use **smooth()** and the **diff()** to get the **sobel()**
 
@@ -102,9 +102,10 @@ When <img src="https://latex.codecogs.com/gif.latex?R" title="R" /> is large, th
 ### 3. Result
 1. compare with **OpenCV**
 <center class="pics"> 
-   <img src="https://github.com/ZibYang/HarrisCornerDetection/raw/main/pics/vspic.png" width="200" alt="vs"/>
+   <img src="https://github.com/ZibYang/HarrisCornerDetection/raw/main/pics/vspic.png"  alt="vs"/>
 </center> 
-2. Max, Min and R
+2. Max, Min and R  
+
 Max:  
 <center class="pics"> 
    <img src="https://github.com/ZibYang/HarrisCornerDetection/raw/main/pics/slambda1.jpg" width="200" alt="max"/>
