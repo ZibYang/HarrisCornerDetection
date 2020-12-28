@@ -99,7 +99,9 @@ When <img src="https://latex.codecogs.com/gif.latex?R" title="R" /> is large, th
 
   2. How to get the **WindowFunction()**  
      I use Guass function here:  
-     <img src="https://latex.codecogs.com/gif.latex?w(u,v)=\frac{1}{2\pi \sigma ^2}e^{-\frac{u^2+v^2}{2\sigma ^2}}" title="w"/>
+     <center class="pics"> 
+   <img src="https://github.com/ZibYang/HarrisCornerDetection/raw/main/pics/w.gif"  width="200", alt="w"/>
+</center>
 
 ### 3. Result
 1. compare with **OpenCV**
