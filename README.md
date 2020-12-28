@@ -4,11 +4,11 @@
 
 1. Clone: `https://github.com/ZibYang/HarrisCornerDetection.git`
 
-2. Do the follow steps:
+2. Do the following steps:
 ```shell
 mkdir build && cd build
 cmake ..
-make ..
+make
 ./src/start windowSize sobelKernelSize k # recommend 5 5 0.05
 ```
 
