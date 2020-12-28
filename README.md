@@ -31,7 +31,7 @@ which
 
 -  <img src="https://latex.codecogs.com/gif.latex?w(x,y)" title="w(x,y)" /> is the **window function** 
 
-  - include **Rectangular window** or **Gaussian window**
+    - include **Rectangular window** or **Gaussian window**
 
     ![]() 
 
@@ -64,3 +64,24 @@ When <img src="https://latex.codecogs.com/gif.latex?|R|" title="|R|" /> is small
 When<img src="https://latex.codecogs.com/gif.latex?R<0" title="R<0" /> the region is edge
 
 When <img src="https://latex.codecogs.com/gif.latex?R" title="R" /> is large, the region is a corner
+
+### 2. How to calculate the Ix, Iy and Ixy
+
+> Use Sobel kernel to converte
+1. How to calculate sobel kernel due to **kernel size**  
+
+  First, using YangHui trainagle to calculate the **smooth()** and the **diff()**
+
+  <img src="https://latex.codecogs.com/gif.latex?YangHui(k,n)=\left\{\begin{matrix}\frac{n!}{(n-k)!k!}\, if(k\geq0,k\leq n) \\ 0 \, otherwise\end{matrix}\right." title="YangHui" />
+
+  <img src="https://latex.codecogs.com/gif.latex?smooth(x, windowSize)=\frac{(windowSize-1)!}{(windowSize-1-x)!x!}" title="smooth"/>
+
+  <img src="https://latex.codecogs.com/gif.latex?diff(x, windowSize)=YangHui(x,\,windowSize-2)-YangHui(x-1,\,YangHui-2)" title=diff/>  
+
+  Then, use **smooth()** and the **diff()** to get the **sobel()**
+  
+  <img src="https://latex.codecogs.com/gif.latex?sobel(windowSize)=diff(0...windowSize,\,windowSize)*smooth(0...windowSize,\,windowSize)" title="sobel"/>
+
+  2. How to get the *WindowFunction()*
+     I use Guass function here:
+     <img src="https://latex.codecogs.com/gif.latex?sobel(windowSize)=diff(0...windowSize,\,windowSize)*smooth(0...windowSize,\,windowSize)" title="sobel"/>

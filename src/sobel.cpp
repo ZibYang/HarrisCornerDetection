@@ -33,9 +33,9 @@ void tools::Sobel(int windowSize, int* rowX, int* colY){
     for(int i = 0; i<windowSize; i++){
         for(int j = 0; j<windowSize; j++){
             if(i == 0)
-                rowX[j] =  smooth(i, windowSize)*diff(j, windowSize);
+                rowX[j] =  smooth(i, windowSize)*diff(j, windowSize);// /windowSize; // normalize
             if(j == 0)
-                colY[i] =  smooth(i, windowSize)*diff(j, windowSize);
+                colY[i] =  smooth(i, windowSize)*diff(j, windowSize); // /windowSize; // mormalize
             std::cout<<smooth(i, windowSize)*diff(j, windowSize)<<" ";
         }
         std::cout<<std::endl;

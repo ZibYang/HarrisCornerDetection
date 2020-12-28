@@ -59,7 +59,7 @@ void harrisCornerDetector_opencv(cv::Mat frame, int windowSize, int sobelKernalS
 	{
 		for (int i = 0; i < normImage.cols; i++)
 		{
-			if ((int)normImage.at<float>(j, i) > thresh + 80)
+			if ((int)normImage.at<float>(j, i) > thresh +50)
 			{
 				cv::circle(frameImg, cv::Point(i, j), 5, cv::Scalar(10, 10, 255), 2, 8, 0);
 			}

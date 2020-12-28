@@ -22,8 +22,8 @@ cv::Mat course::cornerHarris(cv::Mat frame, int windowSize, int sobelKernalSize,
     cv::Mat gaussWindow = tools::gaussTemplate(windowSize).clone();
 
     // caculate Ix, Iy
-    cv::Mat Ix = course::caculateI_(gray, windowSize, rowX, colY).clone();
-    cv::Mat Iy = course::caculateI_(gray, windowSize, colY, rowX).clone();
+    cv::Mat Ix = course::caculateI_(gray, windowSize, rowX, colY).clone() / windowSize;
+    cv::Mat Iy = course::caculateI_(gray, windowSize, colY, rowX).clone() / windowSize;
 
     //caculate Ix^2, Iy^2, IxIy
     cv::Mat IxIx = powFrom(Ix, Ix).clone();
@@ -130,12 +130,12 @@ cv::Mat course::caculateR(cv::Mat IxIx, cv::Mat IyIy, cv::Mat IxIy, int k, int& 
 
     for(int y = 0; y <rows; y++){
         for(int x = 0;x<cols; x++){
-            // double mData[] = {(double)IxIx.at<int32_t>(y, x), (double)IxIy.at<int32_t>(y, x), (double)IxIy.at<int32_t>(y, x), (double)IyIy.at<int32_t>(y, x)};
-            // cv::Mat M(2, 2, CV_64FC1, mData);
-            // cv::Mat eigenValue;
-            // cv::eigen(M, eigenValue);
-            // lambda1.at<int32_t>(y, x) = (int)eigenValue.at<double>(0, 0);
-            // lambda2.at<int32_t>(y, x) = (int)eigenValue.at<double>(1, 0);
+            double mData[] = {(double)IxIx.at<int32_t>(y, x), (double)IxIy.at<int32_t>(y, x), (double)IxIy.at<int32_t>(y, x), (double)IyIy.at<int32_t>(y, x)};
+            cv::Mat M(2, 2, CV_64FC1, mData);
+            cv::Mat eigenValue;
+            cv::eigen(M, eigenValue);
+            lambda1.at<int32_t>(y, x) = (int)eigenValue.at<double>(0, 0);
+            lambda2.at<int32_t>(y, x) = (int)eigenValue.at<double>(1, 0);
 
             
             // int traceM = lambda1.at<int32_t>(y, x) + lambda2.at<int32_t>(y, x);
@@ -154,14 +154,18 @@ cv::Mat course::caculateR(cv::Mat IxIx, cv::Mat IyIy, cv::Mat IxIy, int k, int& 
         //test code
         //std::cout<<std::endl;
     }
+    std::cout<<"saving:"<<std::endl;
+    cv::imwrite("lambda1.jpg",lambda1);
+    cv::imwrite("lambda2.jpg",lambda2);
+    cv::imwrite("R.jpg",R);
     return R;
 }
 
 cv::Mat course::locateTheCorner(cv::Mat frame, cv::Mat R, int max){
     std::cout<<"--------------------------------------------------"<<"\n";
-    std::cout<<"Max:"<<max<<std::endl;
+    std::cout<<"Max:"<<max<<"  ";
     std::cout<<R.rows<<" ,"<<R.cols<<std::endl;
-    int threshold = 0.05 * max;
+    int threshold = 0.1 * max;
     int radius = 8;
 
     for(int y = 0; y<R.rows; y++){
@@ -169,14 +173,21 @@ cv::Mat course::locateTheCorner(cv::Mat frame, cv::Mat R, int max){
             bool flag = true;
             for(int i = -radius; i <= radius; i++)
                 for(int j = -radius; j <= radius; j++){
+                    // test code
                     // std::cout<<"i:"<<i<<" j:"<<j<<" y+i"<<y+i<<" x+j"<<x+j<<std::endl;
-                    if( i==0 || j==0 || x+j <0 || y+i<0 || x+j > R.cols || y+i >R.rows)
+                    if( x+j <0 || y+i<0 || x+j > R.cols || y+i >R.rows)
                         continue;
                     if(R.at<int32_t>(y, x) < R.at<int32_t>(y+i, x+j) || (R.at<int32_t>(y, x) == R.at<int32_t>(y+i, x+j) && (i<0||j<0)))
                         flag = false;
                 }
-            if(flag && R.at<int32_t>(y, x) > threshold)
-                cv::circle(frame, cv::Point(x, y), 5, cv::Scalar(0.0, 165.0, 255.0));
+            if(flag && R.at<int32_t>(y, x) > threshold){
+                // std::cout<<"x"<<x<<",y"<<y<<" :"<<R.at<int32_t>(y, x)<<std::endl;
+                // char as;
+                // std::cin >> as;
+                if(x>radius && y > radius && x<R.cols - radius && y<R.rows - radius){
+                    cv::circle(frame, cv::Point(x, y), 5, cv::Scalar(0.0, 165.0, 255.0), 2);
+                }
+            }
         }
     }
     return frame;
