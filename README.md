@@ -85,7 +85,7 @@ When <img src="https://latex.codecogs.com/gif.latex?R" title="R" /> is large, th
 
     First, using YangHui trainagle to calculate the **smooth()** and the **diff()**
 
-  <img src="https://latex.codecogs.com/gif.latex?YangHui(k,n)=\left\{\begin{matrix}\frac{n!}{(n-k)!k!}\, if(k\geq0,k\leq n) \\ 0 \, otherwise\end{matrix}\right." title="YangHui" />
+  <img src="https://latex.codecogs.com/gif.latex?YangHui(k,n)=\left\{\begin{matrix}\frac{n!}{(n-k)!k!} \, k\geq0,k\leq n\\ 0 \, otherwise\end{matrix}\right." title="YangHui" /> 
 
   <img src="https://latex.codecogs.com/gif.latex?smooth(x, windowSize)=\frac{(windowSize-1)!}{(windowSize-1-x)!x!}" title="smooth"/>
 
@@ -102,20 +102,20 @@ When <img src="https://latex.codecogs.com/gif.latex?R" title="R" /> is large, th
 ### 3. Result
 1. compare with **OpenCV**
 <center class="pics"> 
-   <img src="https://github.com/BiaobiaoZhangZiyang/HarrisCornerDetection/raw/master/pics/vspic.png" width="200" alt="mev"/>
+   <img src="https://github.com/ZibYang/HarrisCornerDetection/raw/main/pics/vspic.png" width="200" alt="vs"/>
 </center> 
 2. Max, Min and R
 Max:  
 <center class="pics"> 
-   <img src="https://github.com/BiaobiaoZhangZiyang/HarrisCornerDetection/raw/master/pics/slambda1.png" width="200" alt="mev"/>
+   <img src="https://github.com/ZibYang/HarrisCornerDetection/raw/main/pics/slambda1.jpg" width="200" alt="max"/>
 </center> 
 Min:  
 <center class="pics"> 
-   <img src="https://github.com/BiaobiaoZhangZiyang/HarrisCornerDetection/raw/master/pics/slambda2.png" width="200" alt="mev"/>
+   <img src="https://github.com/ZibYang/HarrisCornerDetection/raw/main/pics/slambda2.jpg" width="200" alt="min"/>
 </center> 
 R:  
 <center class="pics"> 
-   <img src="https://github.com/BiaobiaoZhangZiyang/HarrisCornerDetection/raw/master/pics/sR.png" width="200" alt="mev"/>
+   <img src="https://github.com/ZibYang/HarrisCornerDetection/raw/main/pics/sR.jpg" width="200" alt="R"/>
 </center> 
 
 
