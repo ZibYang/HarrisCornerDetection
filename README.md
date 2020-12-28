@@ -99,7 +99,7 @@ When <img src="https://latex.codecogs.com/gif.latex?R" title="R" /> is large, th
 
   2. How to get the **WindowFunction()**  
      I use Guass function here:  
-     <center class="pics"> 
+<center class="pics"> 
    <img src="https://github.com/ZibYang/HarrisCornerDetection/raw/main/pics/w.gif"  width="200", alt="w"/>
 </center>
 
